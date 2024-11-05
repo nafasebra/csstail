@@ -1,23 +1,35 @@
 {
-  "name": "cssToTailwindcss",
+  "name": "css-to-tailwindcss",
   "displayName": "css-to-tailwindcss",
   "description": "The extension that convert css styles to tailwindcss utility classes",
   "version": "0.0.1",
+  "publisher": "Nafas Ebrahimi",
   "engines": {
     "vscode": "^1.95.0"
   },
+  "activationEvents": [
+    "onCommand:extension.converttotailwind"
+  ],
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "cssToTailwindcss.helloWorld",
-        "title": "Hello World"
+        "command": "extension.convertToTailwind",
+        "title": "Convert CSS to Tailwind"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.convertToTailwind",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
@@ -47,5 +59,8 @@
     "postcss": "^8.4.47",
     "postcss-js": "^4.0.1",
     "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.14"
   }
 }
