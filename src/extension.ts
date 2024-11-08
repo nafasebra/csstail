@@ -2,9 +2,6 @@ import * as vscode from "vscode";
 import { initialConverting } from "./cssParser";
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log(
-    'Congratulations, your extension "cssToTailwindcss" is now active!'
-  );
   const disposable = vscode.commands.registerCommand(
     "extension.converttotailwind",
     async () => {

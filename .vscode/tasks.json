@@ -21,12 +21,12 @@
             "type": "npm",
             "script": "watch:esbuild",
             "group": "build",
-            "problemMatcher": "$esbuild-watch",
+            "problemMatcher": [], // Empty array if you don't need specific error matching
             "isBackground": true,
             "label": "npm: watch:esbuild",
             "presentation": {
-                "group": "watch",
-                "reveal": "never"
+              "group": "watch",
+              "reveal": "never"
             }
         },
 		{

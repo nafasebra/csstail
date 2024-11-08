@@ -17,14 +17,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.convertToTailwind",
+        "command": "extension.converttotailwind",
         "title": "Convert CSS to Tailwind"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "extension.convertToTailwind",
+          "command": "extension.converttotailwind",
           "when": "editorHasSelection",
           "group": "navigation"
         }
