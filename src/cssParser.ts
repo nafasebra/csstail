@@ -1,105 +1,79 @@
-import * as vscode from "vscode";
-import * as fs from "fs";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwindcss/defaultConfig";
 import postcss from "postcss";
+import { getNestedProperty } from "./helper";
 
-async function loadTailwindConfig() {
-  let userConfig = {};
-  const configFiles = [
-    "tailwind.config.js",
-    "tailwind.config.cjs",
-    "tailwind.config.mjs",
-    "tailwind.config.ts",
-  ];
-
-  try {
-    const workspaceFolders = vscode.workspace.workspaceFolders;
-    if (workspaceFolders) {
-      const configPath = workspaceFolders[0].uri.fsPath;
-
-      for (const configFile of configFiles) {
-        const fullPath = `${configPath}/${configFile}`;
-        if (fs.existsSync(fullPath)) {
-          userConfig = await import(fullPath);
-        }
-      }
-    }
-  } catch (error) {
-    vscode.window.showErrorMessage(
-      "Failed to load Tailwind configuration. it is using default tailwind config"
-    );
-    console.error(error);
-  }
-
-  return resolveConfig({ ...tailwindConfig, ...userConfig });
-}
-
-async function cssToTailwindClass(prop: string, value: string) {
-  const tailwindConfig = await loadTailwindConfig();
-  if (!tailwindConfig) {
-    return null;
-  }
+function cssToTailwindClass(prop: string, value: string) {
+  let tailwindClass = "";
+  let valueConfig = resolveConfig(tailwindConfig);
+  const theme = valueConfig.theme || {};
 
   switch (prop) {
-    case "color":
-      if (tailwindConfig.theme.colors && value in tailwindConfig.theme.colors) {
-        return `text-${value}`;
+    case "color": {
+      const color = getNestedProperty(theme, ["colors", value]);
+      if (color) {
+        // Match predefined Tailwind colors
+        tailwindClass = `text-${value}`;
+      } else {
+        // Handle arbitrary values
+        tailwindClass = `text-[${value}]`;
       }
       break;
-
-    case "background-color":
-      if (tailwindConfig.theme.colors && value in tailwindConfig.theme.colors) {
-        return `bg-${value}`;
+    }
+    case "background-color": {
+      const color = getNestedProperty(theme, ["colors", value]);
+      if (color) {
+        // Match predefined Tailwind colors
+        tailwindClass = `bg-${value}`;
+      } else {
+        // Handle arbitrary values
+        tailwindClass = `bg-[${value}]`;
       }
       break;
-
-    case "margin":
-      if (
-        tailwindConfig.theme.spacing &&
-        value in tailwindConfig.theme.spacing
-      ) {
-        return `m-${value}`;
+    }
+    case "margin": {
+      const spacing = getNestedProperty(theme, ["spacing", value]);
+      if (spacing) {
+        tailwindClass = `m-${value}`;
       }
       break;
-
-    case "padding":
-      if (
-        tailwindConfig.theme.spacing &&
-        value in tailwindConfig.theme.spacing
-      ) {
-        return `p-${value}`;
+    }
+    case "padding": {
+      const spacing = getNestedProperty(theme, ["spacing", value]);
+      if (spacing) {
+        tailwindClass = `p-${value}`;
       }
       break;
-
-    case "font-size":
-      if (
-        tailwindConfig.theme.fontSize &&
-        value in tailwindConfig.theme.fontSize
-      ) {
-        return `text-${value}`;
+    }
+    case "font-size": {
+      const fontSize = getNestedProperty(theme, ["fontSize", value]);
+      if (fontSize) {
+        tailwindClass = `text-${value}`;
       }
       break;
+    }
 
-    // Additional mappings as needed...
     default:
-      return null;
+      break;
   }
 
-  return null;
+  console.log(tailwindClass);
+  return tailwindClass;
 }
 
 // Usage in your parse function
-export async function initialConverting(cssCode: string) {
+export function initialConverting(cssCode: string) {
   const root = postcss.parse(cssCode);
-  let result = "@apply ";
+  let result = " ";
 
-  root.walkDecls((decl) => {
-    const tailwindClass = cssToTailwindClass(decl.prop, decl.value);
-    if (tailwindClass) {
-      result += `${tailwindClass} `;
+  for (const decl of root.nodes) {
+    if (decl.type === "decl") {
+      const tailwindClass = cssToTailwindClass(decl.prop, decl.value);
+      if (tailwindClass) {
+        result += `${tailwindClass} `;
+      }
     }
-  });
+  }
 
   return result;
 }
