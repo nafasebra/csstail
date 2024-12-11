@@ -8,7 +8,7 @@
     "vscode": "^1.95.0"
   },
   "activationEvents": [
-    "onCommand:extension.converttotailwind"
+    "onCommand:extension.csstail"
   ],
   "categories": [
     "Other"
@@ -17,14 +17,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.converttotailwind",
+        "command": "extension.csstail",
         "title": "Convert CSS to Tailwind"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "extension.converttotailwind",
+          "command": "extension.csstail",
           "when": "editorHasSelection",
           "group": "navigation"
         }

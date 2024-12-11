@@ -3,7 +3,7 @@ import { initialConverting } from "./cssParser";
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
-    "extension.converttotailwind",
+    "extension.csstail",
     async () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor) {

@@ -1,6 +1,6 @@
-# cssToTailwindcss README
+# CSSTail VSCode Extention
 
-This is the README for your extension "cssToTailwindcss". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "csstail". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

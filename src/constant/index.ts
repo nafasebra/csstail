@@ -153,4 +153,4 @@ export const NAMED_COLORS_RECORD = {
   yellow: "#ffff00",
   yellowgreen: "#9acd32",
 };
-export const EXTENSION_NAME = "converttotailwind";
+export const EXTENSION_NAME = "csstail";
