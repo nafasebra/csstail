@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import { initialConverting } from "./cssParser";
-import { Log } from "./helper/log";
 
 export function activate(context: vscode.ExtensionContext) {
   const disposable = vscode.commands.registerCommand(
@@ -22,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Replace the selection with the converted Tailwind code
       editor.edit((editBuilder) => {
-        editBuilder.replace(selection, "@apply " + tailwindCode + ";");
+        editBuilder.replace(selection, "@apply" + tailwindCode + ";");
       });
     }
   );

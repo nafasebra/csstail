@@ -64,13 +64,13 @@ function cssToTailwindClass(prop: string, value: string) {
 // Usage in your parse function
 export function initialConverting(cssCode: string) {
   const root = postcss.parse(cssCode);
-  let result = " ";
+  let result = "";
 
   for (const decl of root.nodes) {
     if (decl.type === "decl") {
       const tailwindClass = cssToTailwindClass(decl.prop, decl.value);
       if (tailwindClass) {
-        result += `${tailwindClass} `;
+        result += ` ${tailwindClass}`;
       }
     }
   }
