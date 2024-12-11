@@ -1,71 +1,68 @@
+![CSSTail icon](https://github.com/user-attachments/assets/13620693-e64e-4e56-ad57-276a8199ad54)
+
+
 # CSSTail VSCode Extention
 
-This is the README for your extension "csstail". After writing up a brief description, we recommend including the following sections.
+"CSSTail" extension is designed to streamline the process of converting traditional CSS code into corresponding Tailwind CSS utility classes. It helps developers transition to using Tailwind CSS by providing a seamless and efficient conversion tool directly in their code editor.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- ***Automated Conversion:*** Converts CSS properties into Tailwind utility classes.
 
-For example if there is an image subfolder under your extension project workspace:
+- ***Inline Suggestions:*** Get Tailwind class suggestions as you type.
 
-\!\[feature X\]\(images/feature-x.png\)
+- ***Bulk Conversion:*** Convert entire CSS blocks into Tailwind classes with a single command.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- ***Support for Common Properties:*** Handles a wide range of CSS properties.
 
-## Requirements
+- ***Custom Configuration:*** Supports user-defined mappings and Tailwind theme extensions.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Requirements and installation
 
-## Extension Settings
+1. Open VS Code.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+2. Go to the Extensions Marketplace `(Ctrl+Shift+X or Cmd+Shift+X on macOS)`.
 
-For example:
+3. Search for `CSSTail`.
 
-This extension contributes the following settings:
+4. Click Install and enjoy ✌️.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Usage
 
-## Known Issues
+1. Highlight a CSS property or rule.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+2. Right-click and select Convert to Tailwind from the context menu.
 
-## Release Notes
+3. The CSS code will be replaced with the equivalent Tailwind class.
 
-Users appreciate release notes as you update your extension.
+## Configuration
 
-### 1.0.0
+#### Tailwind Config Path
 
-Initial release of ...
+You can specify the path to your Tailwind configuration file to ensure the extension uses your custom settings:
 
-### 1.0.1
+1. Go to `File > Preferences > Settings (or Code > Preferences > Settings on macOS)`.
 
-Fixed issue #.
+2. Search for CSSTail.
 
-### 1.1.0
+3. Set the path to your Tailwind config file (e.g., tailwind.config.js).
 
-Added features X, Y, and Z.
 
----
+## Contribution
 
-## Following extension guidelines
+We welcome contributions from the community! To contribute:
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- Fork the repository.
+- Create a new branch for your feature or bugfix.
+- Submit a pull request with a detailed description of your changes.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+## License
 
-## Working with Markdown
+This extension is licensed under the MIT License.
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+## Feedback
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+Have suggestions or feedback? Feel free to open an issue on our [GitHub repository](https://github.com/nafasebra/csstail).
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
