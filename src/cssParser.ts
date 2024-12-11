@@ -8,25 +8,41 @@ function cssToTailwindClass(prop: string, value: string) {
   let valueConfig = resolveConfig(tailwindConfig);
   const theme = valueConfig.theme || {};
 
+  console.log(theme);
+
   switch (prop) {
     case "color": {
       const color = getNestedProperty(theme, ["colors", value]);
       if (color) {
-        // Match predefined Tailwind colors
         tailwindClass = `text-${value}`;
       } else {
-        // Handle arbitrary values
         tailwindClass = `text-[${value}]`;
+      }
+      break;
+    }
+    case "width": {
+      const width = getNestedProperty(theme, ["width", value]);
+      if (width) {
+        tailwindClass = `w-${value}`;
+      } else {
+        tailwindClass = `w-[${value}]`;
+      }
+      break;
+    }
+    case "height": {
+      const height = getNestedProperty(theme, ["height", value]);
+      if (height) {
+        tailwindClass = `h-${value}`;
+      } else {
+        tailwindClass = `h-[${value}]`;
       }
       break;
     }
     case "background-color": {
       const color = getNestedProperty(theme, ["colors", value]);
       if (color) {
-        // Match predefined Tailwind colors
         tailwindClass = `bg-${value}`;
       } else {
-        // Handle arbitrary values
         tailwindClass = `bg-[${value}]`;
       }
       break;
@@ -35,6 +51,8 @@ function cssToTailwindClass(prop: string, value: string) {
       const spacing = getNestedProperty(theme, ["spacing", value]);
       if (spacing) {
         tailwindClass = `m-${value}`;
+      } else {
+        tailwindClass = `m-[${value}]`;
       }
       break;
     }
@@ -42,6 +60,8 @@ function cssToTailwindClass(prop: string, value: string) {
       const spacing = getNestedProperty(theme, ["spacing", value]);
       if (spacing) {
         tailwindClass = `p-${value}`;
+      } else {
+        tailwindClass = `p-[${value}]`;
       }
       break;
     }
@@ -49,6 +69,40 @@ function cssToTailwindClass(prop: string, value: string) {
       const fontSize = getNestedProperty(theme, ["fontSize", value]);
       if (fontSize) {
         tailwindClass = `text-${value}`;
+      } else {
+        tailwindClass = `text-[${value}]`;
+      }
+      break;
+    }
+    case "font-family": {
+      const fontFamily = getNestedProperty(theme, ["fontFamily", value]);
+      if (fontFamily) {
+        tailwindClass = `font-${value}`;
+      }
+      break;
+    }
+    case "font-weight": {
+      const fontWeight = getNestedProperty(theme, ["fontWeight", value]);
+      if (fontWeight) {
+        tailwindClass = `font-${value}`;
+      }
+      break;
+    }
+    case "line-height": {
+      const lineHeight = getNestedProperty(theme, ["lineHeight", value]);
+      if (lineHeight) {
+        tailwindClass = `leading-${value}`;
+      } else {
+        tailwindClass = `leading-[${value}]`;
+      }
+      break;
+    }
+    case "letter-spacing": {
+      const letterSpacing = getNestedProperty(theme, ["letterSpacing", value]);
+      if (letterSpacing) {
+        tailwindClass = `tracking-${value}`;
+      } else {
+        tailwindClass = `tracking-[${value}]`;
       }
       break;
     }
