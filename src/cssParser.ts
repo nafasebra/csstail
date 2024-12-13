@@ -2,6 +2,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwindcss/defaultConfig";
 import postcss from "postcss";
 import { getNestedProperty } from "./helper";
+import { NAMED_COLORS } from "./constant";
 
 function cssToTailwindClass(prop: string, value: string) {
   let tailwindClass = "";
@@ -13,9 +14,12 @@ function cssToTailwindClass(prop: string, value: string) {
   switch (prop) {
     case "color": {
       const color = getNestedProperty(theme, ["colors", value]);
-      if (color) {
+      if (color && !NAMED_COLORS[value]) {
         tailwindClass = `text-${value}`;
-      } else {
+      } else if(NAMED_COLORS[value]) {
+        tailwindClass = `text-[${NAMED_COLORS[value]}]`;
+      }
+      else {
         tailwindClass = `text-[${value}]`;
       }
       break;

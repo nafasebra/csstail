@@ -1,9 +1,4 @@
-export const NAMED_COLORS_RECORD = {
-  initial: "initial",
-  inherit: "inherit",
-  currentColor: "currentColor",
-  currentcolor: "currentColor",
-  transparent: "transparent",
+export const NAMED_COLORS: Record<string, string> = {
   aliceblue: "#f0f8ff",
   antiquewhite: "#faebd7",
   aqua: "#00ffff",
@@ -11,7 +6,6 @@ export const NAMED_COLORS_RECORD = {
   azure: "#f0ffff",
   beige: "#f5f5dc",
   bisque: "#ffe4c4",
-  black: "#000000",
   blanchedalmond: "#ffebcd",
   blue: "#0000ff",
   blueviolet: "#8a2be2",
@@ -148,7 +142,6 @@ export const NAMED_COLORS_RECORD = {
   turquoise: "#40e0d0",
   violet: "#ee82ee",
   wheat: "#f5deb3",
-  white: "#ffffff",
   whitesmoke: "#f5f5f5",
   yellow: "#ffff00",
   yellowgreen: "#9acd32",
