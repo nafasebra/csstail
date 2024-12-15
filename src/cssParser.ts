@@ -2,7 +2,7 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "tailwindcss/defaultConfig";
 import postcss from "postcss";
 import { getNestedProperty } from "./helper";
-import { NAMED_COLORS } from "./constant";
+import { NAMED_COLORS } from "./constant/colors";
 
 function cssToTailwindClass(prop: string, value: string) {
   let tailwindClass = "";
