@@ -3,6 +3,7 @@ import tailwindConfig from "tailwindcss/defaultConfig";
 import postcss from "postcss";
 import { getNestedProperty } from "./helper";
 import { NAMED_COLORS } from "./constant/colors";
+import { PROPERTY_MAP } from "./constant/property";
 
 function cssToTailwindClass(prop: string, value: string) {
   let tailwindClass = "";
@@ -11,109 +12,50 @@ function cssToTailwindClass(prop: string, value: string) {
 
   console.log(theme);
 
-  switch (prop) {
-    case "color": {
-      const color = getNestedProperty(theme, ["colors", value]);
-      if (color && !NAMED_COLORS[value]) {
-        tailwindClass = `text-${value}`;
-      } else if(NAMED_COLORS[value]) {
-        tailwindClass = `text-[${NAMED_COLORS[value]}]`;
-      }
-      else {
-        tailwindClass = `text-[${value}]`;
-      }
-      break;
-    }
-    case "width": {
-      const width = getNestedProperty(theme, ["width", value]);
-      if (width) {
-        tailwindClass = `w-${value}`;
-      } else {
-        tailwindClass = `w-[${value}]`;
-      }
-      break;
-    }
-    case "height": {
-      const height = getNestedProperty(theme, ["height", value]);
-      if (height) {
-        tailwindClass = `h-${value}`;
-      } else {
-        tailwindClass = `h-[${value}]`;
-      }
-      break;
-    }
-    case "background-color": {
-      const color = getNestedProperty(theme, ["colors", value]);
-      if (color) {
-        tailwindClass = `bg-${value}`;
-      } else {
-        tailwindClass = `bg-[${value}]`;
-      }
-      break;
-    }
-    case "margin": {
-      const spacing = getNestedProperty(theme, ["spacing", value]);
-      if (spacing) {
-        tailwindClass = `m-${value}`;
-      } else {
-        tailwindClass = `m-[${value}]`;
-      }
-      break;
-    }
-    case "padding": {
-      const spacing = getNestedProperty(theme, ["spacing", value]);
-      if (spacing) {
-        tailwindClass = `p-${value}`;
-      } else {
-        tailwindClass = `p-[${value}]`;
-      }
-      break;
-    }
-    case "font-size": {
-      const fontSize = getNestedProperty(theme, ["fontSize", value]);
-      if (fontSize) {
-        tailwindClass = `text-${value}`;
-      } else {
-        tailwindClass = `text-[${value}]`;
-      }
-      break;
-    }
-    case "font-family": {
-      const fontFamily = getNestedProperty(theme, ["fontFamily", value]);
-      if (fontFamily) {
-        tailwindClass = `font-${value}`;
-      }
-      break;
-    }
-    case "font-weight": {
-      const fontWeight = getNestedProperty(theme, ["fontWeight", value]);
-      if (fontWeight) {
-        tailwindClass = `font-${value}`;
-      }
-      break;
-    }
-    case "line-height": {
-      const lineHeight = getNestedProperty(theme, ["lineHeight", value]);
-      if (lineHeight) {
-        tailwindClass = `leading-${value}`;
-      } else {
-        tailwindClass = `leading-[${value}]`;
-      }
-      break;
-    }
-    case "letter-spacing": {
-      const letterSpacing = getNestedProperty(theme, ["letterSpacing", value]);
-      if (letterSpacing) {
-        tailwindClass = `tracking-${value}`;
-      } else {
-        tailwindClass = `tracking-[${value}]`;
-      }
-      break;
-    }
+  const themeValue = getNestedProperty(theme, ["colors", value]);
 
-    default:
-      break;
+  if (PROPERTY_MAP[prop] !== undefined && PROPERTY_MAP[prop] !== " ") {
+    tailwindClass = !value.includes("-")
+      ? `${PROPERTY_MAP[prop]}-${value}`
+      : `-${PROPERTY_MAP[prop]}-${value}`;
+  } else if (PROPERTY_MAP[prop] !== " ") {
+    tailwindClass = value;
+  } else {
+    tailwindClass = "";
   }
+
+  // switch (prop) {
+  //   case "color": {
+  //     const color = getNestedProperty(theme, ["colors", value]);
+  //     if (color && !NAMED_COLORS[value]) {
+  //       tailwindClass = `text-${value}`;
+  //     } else if(NAMED_COLORS[value]) {
+  //       tailwindClass = `text-[${NAMED_COLORS[value]}]`;
+  //     }
+  //     else {
+  //       tailwindClass = `text-[${value}]`;
+  //     }
+  //     break;
+  //   }
+  //   case "width": {
+  //     const width = getNestedProperty(theme, ["width", value]);
+  //     if (width) {
+  //       tailwindClass = `w-${value}`;
+  //     } else {
+  //       tailwindClass = `w-[${value}]`;
+  //     }
+  //     break;
+  //   }
+  //   case "margin": {
+  //     const spacing = getNestedProperty(theme, ["spacing", value]);
+  //     if (spacing) {
+  //       tailwindClass = `m-${value}`;
+  //     } else {
+  //       tailwindClass = `m-[${value}]`;
+  //     }
+  //     break;
+  //   }
+  // }
 
   console.log(tailwindClass);
   return tailwindClass;

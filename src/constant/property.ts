@@ -132,12 +132,92 @@ export const PROPERTY_MAP: Record<string, string> = {
   'bottom': 'bottom',
   'clear': 'clear',
   'float': 'float',
-  'display': '',
-  'position': '',
-  'visibility': '',
-  'isolation': '',
-  'font-style': '',
-  'font-variant-numeric': '',
-  'text-decoration-line': '',
-  'text-transform': '',
+  'display': ' ',
+  'position': ' ',
+  'visibility': ' ',
+  'isolation': ' ',
+  'font-style': ' ',
+  'font-variant-numeric': ' ',
+  'text-decoration-line': ' ',
+  'text-transform': ' ',
+};
+export const THEME_PATH_MAP: Record<string, string> = {
+  // Colors
+  "color": "colors",
+  "background-color": "colors",
+  "border-color": "colors",
+
+  // Background
+  "background-image": "backgroundImage",
+  "background-position": "backgroundPosition",
+  "background-size": "backgroundSize",
+  "background-repeat": "backgroundRepeat",
+  "gradient-color-stops": "colors",
+
+  // Border
+  "border-width": "borderWidth",
+  "border-radius": "borderRadius",
+
+  // Box Shadow
+  "box-shadow": "boxShadow",
+  "ring-width": "ringWidth",
+  "ring-offset-width": "ringOffsetWidth",
+
+  // Spacing
+  "margin": "spacing",
+  "padding": "spacing",
+  "gap": "spacing",
+  "inset": "spacing", // Used for top, right, bottom, left
+
+  // Sizing
+  "width": "width",
+  "height": "height",
+  "min-width": "minWidth",
+  "max-width": "maxWidth",
+  "min-height": "minHeight",
+  "max-height": "maxHeight",
+  "flex-basis": "spacing",
+
+  // Typography
+  "font-size": "fontSize",
+  "font-family": "fontFamily",
+  "font-weight": "fontWeight",
+  "letter-spacing": "letterSpacing",
+  "line-height": "lineHeight",
+  "text-transform": "textTransform",
+  "text-decoration": "textDecoration",
+  "text-shadow": "textShadow",
+
+  // Layout
+  "flex": "flex",
+  "flex-grow": "flexGrow",
+  "flex-shrink": "flexShrink",
+  "order": "order",
+  "grid-template-columns": "gridTemplateColumns",
+  "grid-template-rows": "gridTemplateRows",
+  "grid-column": "gridColumn",
+  "grid-row": "gridRow",
+  "grid-auto-flow": "gridAutoFlow",
+  "grid-auto-columns": "gridAutoColumns",
+  "grid-auto-rows": "gridAutoRows",
+  "gap-x": "spacing", // Horizontal grid gaps
+  "gap-y": "spacing", // Vertical grid gaps
+
+  // Animation
+  "transition-duration": "transitionDuration",
+  "transition-timing-function": "transitionTimingFunction",
+  "transition-delay": "transitionDelay",
+
+  // Opacity
+  "opacity": "opacity",
+
+  // Z-Index
+  "z-index": "zIndex",
+
+  // Cursor
+  "cursor": "cursor",
+
+  // List Styles
+  "list-style-type": "listStyleType",
+  "list-style-position": "listStylePosition",
 };
