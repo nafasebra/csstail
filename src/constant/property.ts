@@ -1,3 +1,5 @@
+import { RecordableHistogram } from "perf_hooks";
+
 export const PROPERTY_MAP: Record<string, string> = {
   color: "text",
   background: "bg",
@@ -221,7 +223,7 @@ export const THEME_PATH_MAP: Record<string, string> = {
   "list-style-type": "listStyleType",
   "list-style-position": "listStylePosition",
 };
-export const PROPERTY_AS_VALUE_MAP = {
+export const PROPERTY_AS_VALUE_MAP: Record<string, Record<string, string>> = {
   display: {
     block: "block",
     "inline-block": "inline-block",
@@ -243,7 +245,7 @@ export const PROPERTY_AS_VALUE_MAP = {
     "inline-grid": "inline-grid",
     contents: "contents",
     "list-item": "list-item",
-    hidden: "none",
+    none: "hidden",
   },
   position: {
     static: "static",
@@ -254,19 +256,19 @@ export const PROPERTY_AS_VALUE_MAP = {
   },
   visibility: {
     visible: "visible",
-    invisible: "hidden",
+    hidden: "invisible",
     collapse: "collapse",
   },
   isolation: {
     isolate: "isolate",
-    "isolation-auto": "auto",
+    auto: "isolation-auto",
   },
   "font-style": {
     italic: "italic",
-    "not-italic": "normal",
+    normal: "not-italic",
   },
   "font-variant-numeric": {
-    "normal-nums": "normal",
+    normal: "normal-nums",
     ordinal: "ordinal",
     "slashed-zero": "slashed-zero",
     "lining-nums": "lining-nums",
@@ -280,12 +282,12 @@ export const PROPERTY_AS_VALUE_MAP = {
     underline: "underline",
     overline: "overline",
     "line-through": "line-through",
-    "no-underline": "none",
+    nonee: "no-underline",
   },
   "text-transform": {
     uppercase: "uppercase",
     lowercase: "lowercase",
     capitalize: "capitalize",
-    "normal-case": "none",
-  }
+    none: "normal-case",
+  },
 };
