@@ -20,7 +20,7 @@ function cssToTailwindClass(prop: string, value: string) {
     const themeValue = getNestedProperty(theme, [THEME_PATH_MAP[prop], value]);
     if (THEME_PATH_MAP[prop] === "colors") {
       if (themeValue && !NAMED_COLORS[value]) {
-        tailwindClass = `${PROPERTY_MAP[prop]}-${themeValue}`;
+        tailwindClass = `${PROPERTY_MAP[prop]}-${value}`;
       } else if (NAMED_COLORS[value]) {
         tailwindClass = `${PROPERTY_MAP[prop]}-[${NAMED_COLORS[value]}]`;
       } else {
