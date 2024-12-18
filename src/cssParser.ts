@@ -51,15 +51,37 @@ function cssToTailwindClass(prop: string, value: string) {
 // Usage in your parse function
 export function initialConverting(cssCode: string) {
   const root = postcss.parse(cssCode);
+  const untracked_styles = [];
+  const tailwindclass_list = [];
   let result = "";
+
+  console.log(root);
 
   for (const decl of root.nodes) {
     if (decl.type === "decl") {
       const tailwindClass = cssToTailwindClass(decl.prop, decl.value);
       if (tailwindClass) {
-        result += ` ${tailwindClass}`;
+        tailwindclass_list.push(tailwindClass);
+      } else {
+        untracked_styles.push(decl);
       }
     }
+  }
+
+  if (tailwindclass_list.length) {
+    result = "\t@apply";
+    tailwindclass_list.forEach((item) => {
+      result += ` ${item}`;
+    });
+    result += "; \n";
+  }
+
+  if (untracked_styles.length) {
+    untracked_styles.forEach((item, index) => {
+      index !== untracked_styles.length - 1
+        ? (result += `${item} \n`)
+        : (result += `${item}`);
+    });
   }
 
   return result;

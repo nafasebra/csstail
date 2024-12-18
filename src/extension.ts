@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       // Replace the selection with the converted Tailwind code
       editor.edit((editBuilder) => {
-        editBuilder.replace(selection, "@apply" + tailwindCode + ";");
+        editBuilder.replace(selection, tailwindCode);
       });
     }
   );
