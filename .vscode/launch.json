@@ -17,5 +17,20 @@
 			],
 			"preLaunchTask": "${defaultBuildTask}"
 		}
+		, {
+			"name": "Run Tests",
+			"type": "extensionHost",
+			"request": "launch",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}",
+				"--extensionTestsPath=${workspaceFolder}/out/test"
+			],
+			"outFiles": [
+				"${workspaceFolder}/out/test/**/*.js"
+			],
+			"preLaunchTask": "npm: compile"
+		}
 	]
+
+
 }
