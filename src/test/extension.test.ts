@@ -21,7 +21,7 @@ suite("Extension Test Suite", () => {
   test("Initial converting function test", () => {
     const cssCode = "color: red;";
     const normalizedCssCode = cssCode.trim().replace(/\s+/g, " ");
-    const expectedTailwindCode = "@apply text-[#ff0000];";
+    const expectedTailwindCode = "\t@apply text-[#ff0000]; \n";
     const result = initialConverting(normalizedCssCode);
     assert.equal(result, expectedTailwindCode);
   });
@@ -32,7 +32,7 @@ suite("Extension Test Suite", () => {
 			background-color: blue;
 			`;
     const normalizedCssCode = cssCode.trim().replace(/\s+/g, " ");
-    const expectedTailwindCode = "@apply text-[#ff0000] bg-[#0000ff];";
+    const expectedTailwindCode = "\t@apply text-[#ff0000] bg-[#0000ff]; \n";
     const result = initialConverting(normalizedCssCode);
     assert.equal(result, expectedTailwindCode);
   });
