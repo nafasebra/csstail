@@ -1,13 +1,13 @@
 {
-  "name": "css-to-tailwindcss",
-  "displayName": "css-to-tailwindcss",
+  "name": "csstail",
+  "displayName": "csstail",
   "description": "The extension that convert css styles to tailwindcss utility classes",
-  "version": "0.0.1",
-  "publisher": "Nafas Ebrahimi",
+  "version": "1.0.0",
+  "publisher": "nafasebra",
   "engines": {
     "vscode": "^1.95.0"
   },
-  "icon": "https://github.com/user-attachments/assets/13620693-e64e-4e56-ad57-276a8199ad54",
+  "icon": "./assets/csstail-icon.png",
   "activationEvents": [],
   "categories": [
     "Other"
